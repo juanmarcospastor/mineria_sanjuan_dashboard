@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h2>Base exportaciones provinciales - {{ provincia }}</h2>
+  <p>Esta vista sirve para revisar rápidamente lo que está cargado en la base.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Provincia</th>
+          <th>Exportaciones mineras USD</th>
+          <th>Exportaciones totales USD</th>
+          <th>Var. i.a.</th>
+          <th>Fuente</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in rows %}
+        <tr>
+          <td>{{ r.fecha }}</td>
+          <td>{{ r.provincia }}</td>
+          <td>{{ "{:,.0f}".format(r.exportaciones_mineras_usd).replace(",", ".") }}</td>
+          <td>{% if r.exportaciones_totales_usd %}{{ "{:,.0f}".format(r.exportaciones_totales_usd).replace(",", ".") }}{% else %}s/d{% endif %}</td>
+          <td>{% if r.variacion_interanual_pct is not none %}{{ "{:.1f}%".format(r.variacion_interanual_pct * 100).replace(".", ",") }}{% else %}s/d{% endif %}</td>
+          <td>{{ r.fuente or "" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

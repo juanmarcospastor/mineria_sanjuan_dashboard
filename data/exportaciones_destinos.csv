@@ -1,0 +1,123 @@
+fecha;provincia;destino;valor_fob_usd;participacion_pct;fuente
+2025-07;NOA;Bélgica;9014000;0.07;DNPEM + cálculo propio
+2025-07;NOA;China;75994000;0.589;DNPEM + cálculo propio
+2025-07;NOA;Estados Unidos;25724000;0.199;DNPEM + cálculo propio
+2025-07;NOA;Resto;18268000;0.142;DNPEM + cálculo propio
+2025-07;San Juan;India;10791000;0.101;DNPEM + cálculo propio
+2025-07;San Juan;Suiza;93106000;0.87;DNPEM + cálculo propio
+2025-07;San Juan;Resto;3103000;0.029;DNPEM + cálculo propio
+2025-07;Santa Cruz;Canadá;22149315;0.114;DNPEM + cálculo propio
+2025-07;Santa Cruz;Estados Unidos;68234914;0.352;DNPEM + cálculo propio
+2025-07;Santa Cruz;Suiza;103615770;0.534;DNPEM + cálculo propio
+2025-07;Santa Cruz;Resto;0;0;DNPEM + cálculo propio
+2025-08;NOA;China;65553368;0.596;DNPEM + cálculo propio
+2025-08;NOA;Estados Unidos;38322243;0.348;DNPEM + cálculo propio
+2025-08;NOA;Suiza;6124389;0.056;DNPEM + cálculo propio
+2025-08;NOA;Resto;0;0;DNPEM + cálculo propio
+2025-08;San Juan;India;63946000;0.587;DNPEM + cálculo propio
+2025-08;San Juan;Suiza;42864000;0.393;DNPEM + cálculo propio
+2025-08;San Juan;Resto;2190000;0.02;DNPEM + cálculo propio
+2025-08;Santa Cruz;Canadá;29187000;0.149;DNPEM + cálculo propio
+2025-08;Santa Cruz;Estados Unidos;64564000;0.329;DNPEM + cálculo propio
+2025-08;Santa Cruz;Suiza;72499000;0.37;DNPEM + cálculo propio
+2025-08;Santa Cruz;Resto;29750000;0.152;DNPEM + cálculo propio
+2025-09;NOA;China;139242879;0.774;DNPEM + cálculo propio
+2025-09;NOA;Corea del Sur;8835620;0.049;DNPEM + cálculo propio
+2025-09;NOA;Estados Unidos;31921501;0.177;DNPEM + cálculo propio
+2025-09;NOA;Resto;0;0;DNPEM + cálculo propio
+2025-09;San Juan;India;138823000;0.978;DNPEM + cálculo propio
+2025-09;San Juan;Suiza;30000;0;DNPEM + cálculo propio
+2025-09;San Juan;Resto;3147000;0.022;DNPEM + cálculo propio
+2025-09;Santa Cruz;Canadá;30827000;0.136;DNPEM + cálculo propio
+2025-09;Santa Cruz;Estados Unidos;72029000;0.319;DNPEM + cálculo propio
+2025-09;Santa Cruz;Suiza;99614000;0.441;DNPEM + cálculo propio
+2025-09;Santa Cruz;Resto;23530000;0.104;DNPEM + cálculo propio
+2025-10;NOA;Brasil;9846000;0.053;DNPEM + cálculo propio
+2025-10;NOA;China;103159000;0.558;DNPEM + cálculo propio
+2025-10;NOA;Corea del Sur;6093000;0.033;DNPEM + cálculo propio
+2025-10;NOA;Estados Unidos;39327000;0.213;DNPEM + cálculo propio
+2025-10;NOA;Resto;26575000;0.144;DNPEM + cálculo propio
+2025-10;San Juan;India;145333000;0.95;DNPEM + cálculo propio
+2025-10;San Juan;Resto;7667000;0.05;DNPEM + cálculo propio
+2025-10;Santa Cruz;Canadá;35382000;0.116;DNPEM + cálculo propio
+2025-10;Santa Cruz;Estados Unidos;123443000;0.406;DNPEM + cálculo propio
+2025-10;Santa Cruz;Suiza;79943000;0.263;DNPEM + cálculo propio
+2025-10;Santa Cruz;Resto;65232000;0.215;DNPEM + cálculo propio
+2025-11;NOA;China;91790000;0.629;DNPEM + cálculo propio
+2025-11;NOA;Corea del Sur;12102000;0.083;DNPEM + cálculo propio
+2025-11;NOA;Estados Unidos;30666000;0.21;DNPEM + cálculo propio
+2025-11;NOA;Resto;11442000;0.078;DNPEM + cálculo propio
+2025-11;San Juan;India;58046000;0.436;DNPEM + cálculo propio
+2025-11;San Juan;Suiza;68442000;0.515;DNPEM + cálculo propio
+2025-11;San Juan;Resto;6512000;0.049;DNPEM + cálculo propio
+2025-11;Santa Cruz;Canadá;61952000;0.268;DNPEM + cálculo propio
+2025-11;Santa Cruz;Estados Unidos;64836000;0.281;DNPEM + cálculo propio
+2025-11;Santa Cruz;Suiza;84240000;0.365;DNPEM + cálculo propio
+2025-11;Santa Cruz;Resto;19972000;0.086;DNPEM + cálculo propio
+2025-12;NOA;China;128166057;0.772;DNPEM + cálculo propio
+2025-12;NOA;Corea del Sur;9482311;0.057;DNPEM + cálculo propio
+2025-12;NOA;Estados Unidos;28351633;0.171;DNPEM + cálculo propio
+2025-12;NOA;Resto;0;0;DNPEM + cálculo propio
+2025-12;San Juan;India;63757000;0.452;DNPEM + cálculo propio
+2025-12;San Juan;Suiza;67528000;0.479;DNPEM + cálculo propio
+2025-12;San Juan;Resto;9715000;0.069;DNPEM + cálculo propio
+2025-12;Santa Cruz;Canadá;49941000;0.179;DNPEM + cálculo propio
+2025-12;Santa Cruz;Estados Unidos;94627000;0.339;DNPEM + cálculo propio
+2025-12;Santa Cruz;Suiza;75169000;0.269;DNPEM + cálculo propio
+2025-12;Santa Cruz;Resto;59263000;0.212;DNPEM + cálculo propio
+2026-01;NOA;China;106402402;0.619;DNPEM + cálculo propio
+2026-01;NOA;Estados Unidos;31163163;0.181;DNPEM + cálculo propio
+2026-01;NOA;Japón;9813814;0.057;DNPEM + cálculo propio
+2026-01;NOA;Suiza;9125125;0.053;DNPEM + cálculo propio
+2026-01;NOA;Resto;15495495;0.09;DNPEM + cálculo propio
+2026-01;San Juan;India;154512000;0.666;DNPEM + cálculo propio
+2026-01;San Juan;Suiza;68672000;0.296;DNPEM + cálculo propio
+2026-01;San Juan;Resto;8816000;0.038;DNPEM + cálculo propio
+2026-01;Santa Cruz;Canadá;68800000;0.172;DNPEM + cálculo propio
+2026-01;Santa Cruz;Estados Unidos;158400000;0.396;DNPEM + cálculo propio
+2026-01;Santa Cruz;Suiza;90000000;0.225;DNPEM + cálculo propio
+2026-01;Santa Cruz;Resto;82800000;0.207;DNPEM + cálculo propio
+2026-02;NOA;China;166840012;0.783;DNPEM + cálculo propio
+2026-02;NOA;Estados Unidos;44199297;0.208;DNPEM + cálculo propio
+2026-02;NOA;Japón;1826296;0.009;DNPEM + cálculo propio
+2026-02;NOA;Suiza;134395;0.001;DNPEM + cálculo propio
+2026-02;NOA;Resto;0;0;DNPEM + cálculo propio
+2026-02;San Juan;India;86272000;0.502;DNPEM + cálculo propio
+2026-02;San Juan;Suiza;75152000;0.437;DNPEM + cálculo propio
+2026-02;San Juan;Resto;10576000;0.061;DNPEM + cálculo propio
+2026-02;Santa Cruz;Canadá;57641000;0.214;DNPEM + cálculo propio
+2026-02;Santa Cruz;Estados Unidos;74412000;0.277;DNPEM + cálculo propio
+2026-02;Santa Cruz;Suiza;115383000;0.429;DNPEM + cálculo propio
+2026-02;Santa Cruz;Resto;21564000;0.08;DNPEM + cálculo propio
+2026-03;NOA;China;229621158;0.803;DNPEM + cálculo propio
+2026-03;NOA;Estados Unidos;46432237;0.162;DNPEM + cálculo propio
+2026-03;NOA;Suiza;9946605;0.035;DNPEM + cálculo propio
+2026-03;NOA;Resto;0;0;DNPEM + cálculo propio
+2026-03;San Juan;India;16482000;0.079;DNPEM + cálculo propio
+2026-03;San Juan;Suiza;185280000;0.891;DNPEM + cálculo propio
+2026-03;San Juan;Resto;6238000;0.03;DNPEM + cálculo propio
+2026-03;Santa Cruz;Canadá;49959000;0.155;DNPEM + cálculo propio
+2026-03;Santa Cruz;Estados Unidos;71604000;0.222;DNPEM + cálculo propio
+2026-03;Santa Cruz;Suiza;163545000;0.506;DNPEM + cálculo propio
+2026-03;Santa Cruz;Resto;37892000;0.117;DNPEM + cálculo propio
+2026-04;NOA;China;236248000;0.826;DNPEM + cálculo propio
+2026-04;NOA;Estados Unidos;32324000;0.113;DNPEM + cálculo propio
+2026-04;NOA;Suiza;8086000;0.028;DNPEM + cálculo propio
+2026-04;NOA;Resto;9342000;0.033;DNPEM + cálculo propio
+2026-04;San Juan;India;11018000;0.047;DNPEM + cálculo propio
+2026-04;San Juan;Suiza;215105000;0.923;DNPEM + cálculo propio
+2026-04;San Juan;Resto;6877000;0.03;DNPEM + cálculo propio
+2026-04;Santa Cruz;Canadá;38238000;0.134;DNPEM + cálculo propio
+2026-04;Santa Cruz;Estados Unidos;64089000;0.224;DNPEM + cálculo propio
+2026-04;Santa Cruz;Suiza;149565000;0.523;DNPEM + cálculo propio
+2026-04;Santa Cruz;Resto;34108000;0.119;DNPEM + cálculo propio
+2026-05;NOA;China;192084000;0.719;DNPEM + cálculo propio
+2026-05;NOA;Estados Unidos;38226000;0.143;DNPEM + cálculo propio
+2026-05;NOA;Suiza;8922000;0.033;DNPEM + cálculo propio
+2026-05;NOA;Resto;27768000;0.104;DNPEM + cálculo propio
+2026-05;San Juan;Suiza;109383000;0.96;DNPEM + cálculo propio
+2026-05;San Juan;Resto;4617000;0.04;DNPEM + cálculo propio
+2026-05;Santa Cruz;Canadá;86450000;0.349;DNPEM + cálculo propio
+2026-05;Santa Cruz;Estados Unidos;52087000;0.21;DNPEM + cálculo propio
+2026-05;Santa Cruz;Suiza;100755000;0.406;DNPEM + cálculo propio
+2026-05;Santa Cruz;Resto;8708000;0.035;DNPEM + cálculo propio

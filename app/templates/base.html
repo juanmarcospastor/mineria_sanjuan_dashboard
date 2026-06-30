@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Monitor Minero San Juan</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Monitor Interactivo de Minería de San Juan</h1>
+      <p>Exportaciones, precios internacionales, destinos, composición y balance comercial</p>
+    </div>
+    <nav>
+      <a href="{{ url_for('main.dashboard') }}">Tablero</a>
+      <a href="{{ url_for('main.datos') }}">Datos</a>
+    </nav>
+  </header>
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer">
+    Demo Flask + Plotly + SQLite/PostgreSQL. Datos de ejemplo para reemplazar por bases reales.
+  </footer>
+</body>
+</html>

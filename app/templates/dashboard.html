@@ -1,0 +1,77 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<section class="filters card">
+  <form method="get" id="filter-form">
+    <label>Provincia
+      <select name="provincia" id="provincia">
+        {% for p in provincias %}
+          {% if p != 'Argentina' %}
+          <option value="{{ p }}" {% if p == provincia %}selected{% endif %}>{{ p }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </label>
+    <label>Mes
+      <select name="fecha" id="fecha">
+        {% for f in fechas %}
+          <option value="{{ f }}" {% if f == fecha %}selected{% endif %}>{{ f }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <button type="submit">Actualizar</button>
+  </form>
+  {% if provincia == "NOA" %}
+    <p class="region-note">NOA incluye las provincias de Catamarca, Jujuy y Salta.</p>
+  {% endif %}
+</section>
+
+<section class="kpi-grid">
+  <div class="kpi"><span>Exportaciones mineras</span><strong>{{ kpis.exportaciones }}</strong></div>
+  <div class="kpi"><span>Variación interanual</span><strong>{{ kpis.var_ia }}</strong></div>
+  <div class="kpi"><span>Minería / exportaciones provinciales</span><strong>{{ kpis.part_mineria }}</strong></div>
+  <div class="kpi"><span>Participación nacional</span><strong>{{ kpis.part_nacional }}</strong></div>
+  <div class="kpi"><span>Principal producto</span><strong>{{ kpis.producto }}</strong></div>
+  <div class="kpi"><span>Principal destino</span><strong>{{ kpis.destino }}</strong></div>
+</section>
+
+<section class="grid two">
+  <div class="card"><div id="chart-exportaciones"></div></div>
+  <div class="card"><div id="chart-provincias"></div></div>
+  <div class="card"><div id="chart-productos"></div></div>
+  <div class="card"><div id="chart-destinos"></div></div>
+  <div class="card wide price-panel">
+    <div class="section-head">
+      <h2>Precios internacionales</h2>
+      <span>series con escala propia por mineral</span>
+    </div>
+    <div class="price-grid">
+      <div class="price-cell"><div id="chart-precio-oro"></div></div>
+      <div class="price-cell"><div id="chart-precio-plata"></div></div>
+      <div class="price-cell"><div id="chart-precio-cobre"></div></div>
+      <div class="price-cell"><div id="chart-precio-litio"></div></div>
+    </div>
+  </div>
+  <div class="card"><div id="chart-volumen"></div></div>
+  <div class="card wide"><div id="chart-balance"></div></div>
+</section>
+
+<section class="card notes">
+  <h2>Lectura económica automatica</h2>
+  {% for parrafo in lectura %}
+    <p>{{ parrafo }}</p>
+  {% endfor %}
+</section>
+
+<script>
+  window.dashboardParams = {
+    provincia: "{{ provincia }}",
+    fecha: "{{ fecha }}"
+  };
+</script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}
+
+
+
+
+

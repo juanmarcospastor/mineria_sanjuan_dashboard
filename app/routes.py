@@ -1,0 +1,333 @@
+﻿from flask import Blueprint, render_template, request, jsonify
+from sqlalchemy import func
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.utils import PlotlyJSONEncoder
+import json
+
+from .models import ExportacionProvincial, ExportacionProducto, ExportacionDestino, PrecioMineral, BalanceComercial
+
+bp = Blueprint("main", __name__)
+
+
+def empty_fig(title, message="Sin datos para este mes"):
+    fig = go.Figure()
+    fig.update_layout(
+        title=title,
+        xaxis=dict(visible=False),
+        yaxis=dict(visible=False),
+        annotations=[dict(
+            text=message,
+            x=0.5,
+            y=0.5,
+            xref="paper",
+            yref="paper",
+            showarrow=False,
+            font=dict(size=18, color="#64748b"),
+        )],
+    )
+    return fig
+
+
+def fig_json(fig, height=410):
+    fig.update_layout(
+        template="plotly_white",
+        margin=dict(l=20, r=20, t=55, b=35),
+        height=height,
+        legend_title_text="",
+        font=dict(family="Inter, Arial, sans-serif"),
+    )
+    return json.dumps(fig, cls=PlotlyJSONEncoder)
+
+
+def price_fig(df_prec, mineral, color):
+    df = df_prec[df_prec["mineral"] == mineral].sort_values("fecha")
+    title = f"{mineral}"
+    if df.empty:
+        return empty_fig(title, "Sin datos disponibles")
+
+    unit = df["unidad"].dropna().iloc[-1] if not df["unidad"].dropna().empty else "USD"
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=df["fecha"],
+        y=df["precio_usd"],
+        mode="lines+markers",
+        name=mineral,
+        line=dict(color=color, width=2.6),
+        marker=dict(size=6, color=color),
+        customdata=df[["unidad"]],
+        hovertemplate="%{x}<br>Precio: USD %{y:,.1f}<br>Unidad: %{customdata[0]}<extra></extra>",
+    ))
+    fig.update_layout(
+        title=title,
+        showlegend=False,
+        hovermode="x unified",
+    )
+    fig.update_yaxes(title=unit, rangemode="tozero", tickformat=",.0f")
+    fig.update_xaxes(title="")
+    return fig
+
+
+def money_millions(value):
+    if value is None:
+        return "s/d"
+    return f"USD {value/1_000_000:,.0f} M".replace(",", ".")
+
+
+def pct(value):
+    if value is None:
+        return "s/d"
+    sign = "+" if value > 0 else ""
+    return f"{sign}{value:.1f}%".replace(".", ",")
+
+
+def ratio_pct(value):
+    if value is None:
+        return "s/d"
+    return pct(value * 100)
+
+
+def share_pct(value):
+    if value is None:
+        return "s/d"
+    return f"{value:.1f}%".replace(".", ",")
+
+
+def describe_change(value):
+    if value is None:
+        return "sin dato de variación interanual"
+    if value > 0.05:
+        return f"con un crecimiento interanual de {ratio_pct(value)}"
+    if value < -0.05:
+        return f"con una caída interanual de {ratio_pct(value).replace('-', '')}"
+    return f"con una variación interanual prácticamente estable de {ratio_pct(value)}"
+
+
+def generar_lectura(provincia, fecha, actual, total_arg, top_producto, top_destino, part_mineria, part_nacional):
+    if not actual:
+        return [
+            f"No hay datos de exportaciones mineras para {provincia} en {fecha}.",
+            "Completando exportaciones_provinciales.csv para ese mes se habilitan los KPIs y la lectura económica automatica.",
+        ]
+
+    ranking = ExportacionProvincial.query.filter(
+        ExportacionProvincial.fecha == fecha,
+        ExportacionProvincial.provincia != "Argentina",
+    ).order_by(ExportacionProvincial.exportaciones_mineras_usd.desc()).all()
+    posicion = next((i + 1 for i, row in enumerate(ranking) if row.provincia == provincia), None)
+    lider = ranking[0] if ranking else None
+
+    lectura = [
+        f"En {fecha}, {provincia} registró exportaciones mineras por {money_millions(actual.exportaciones_mineras_usd)}, {describe_change(actual.variacion_interanual_pct)}.",
+    ]
+
+    contexto = []
+    if part_mineria is not None:
+        contexto.append(f"la minería explicó {share_pct(part_mineria)} de las exportaciones provinciales")
+    if part_nacional is not None and total_arg:
+        contexto.append(f"representó {share_pct(part_nacional)} de las exportaciones mineras nacionales")
+    elif not total_arg:
+        contexto.append("no se puede calcular la participación nacional porque falta la fila Argentina para el mes")
+    if posicion and ranking:
+        contexto.append(f"ocupo el puesto {posicion} entre {len(ranking)} provincias cargadas")
+    if contexto:
+        lectura.append("En terminos relativos, " + "; ".join(contexto) + ".")
+
+    if lider and lider.provincia != provincia:
+        diferencia = lider.exportaciones_mineras_usd - actual.exportaciones_mineras_usd
+        lectura.append(f"La provincia líder del mes fue {lider.provincia}, con {money_millions(lider.exportaciones_mineras_usd)}, una diferencia de {money_millions(diferencia)} frente a {provincia}.")
+    elif lider and lider.provincia == provincia and len(ranking) > 1:
+        lectura.append(f"{provincia} lideró la comparación provincial del mes entre las provincias cargadas en la base.")
+
+    composicion = []
+    if top_producto:
+        composicion.append(f"el principal producto fue {top_producto.producto}, con {share_pct(top_producto.participacion_pct)} de participación")
+    else:
+        composicion.append("todavia falta cargar la composicion por producto para este mes")
+    if top_destino:
+        composicion.append(f"el principal destino fue {top_destino.destino}, con {share_pct(top_destino.participacion_pct)} de participación")
+    else:
+        composicion.append("todavia falta cargar la apertura por destino")
+    lectura.append("En la apertura comercial, " + "; ".join(composicion) + ".")
+
+    return lectura
+
+
+def get_filters():
+    provincias = [p[0] for p in ExportacionProvincial.query.with_entities(ExportacionProvincial.provincia).distinct().order_by(ExportacionProvincial.provincia).all()]
+    fechas = [f[0] for f in ExportacionProvincial.query.with_entities(ExportacionProvincial.fecha).distinct().order_by(ExportacionProvincial.fecha.desc()).all()]
+    return provincias, fechas
+
+
+@bp.route("/")
+def dashboard():
+    provincias, fechas = get_filters()
+    provincia = request.args.get("provincia", "San Juan")
+    fecha = request.args.get("fecha", fechas[0] if fechas else "2026-04")
+
+    actual = ExportacionProvincial.query.filter_by(provincia=provincia, fecha=fecha).first()
+    total_arg = ExportacionProvincial.query.filter_by(provincia="Argentina", fecha=fecha).first()
+
+    total_prov = actual.exportaciones_totales_usd if actual and actual.exportaciones_totales_usd else None
+    part_mineria = (actual.exportaciones_mineras_usd / total_prov * 100) if actual and total_prov else None
+    part_nacional = (actual.exportaciones_mineras_usd / total_arg.exportaciones_mineras_usd * 100) if actual and total_arg and total_arg.exportaciones_mineras_usd else None
+
+    top_producto = ExportacionProducto.query.filter_by(provincia=provincia, fecha=fecha).order_by(ExportacionProducto.valor_fob_usd.desc()).first()
+    top_destino = ExportacionDestino.query.filter_by(provincia=provincia, fecha=fecha).order_by(ExportacionDestino.valor_fob_usd.desc()).first()
+
+    kpis = {
+        "exportaciones": money_millions(actual.exportaciones_mineras_usd if actual else None),
+        "var_ia": ratio_pct(actual.variacion_interanual_pct if actual else None),
+        "part_mineria": share_pct(part_mineria),
+        "part_nacional": share_pct(part_nacional),
+        "producto": f"{top_producto.producto} ({share_pct(top_producto.participacion_pct)})" if top_producto else "s/d",
+        "destino": f"{top_destino.destino} ({share_pct(top_destino.participacion_pct)})" if top_destino else "s/d",
+    }
+
+    lectura = generar_lectura(provincia, fecha, actual, total_arg, top_producto, top_destino, part_mineria, part_nacional)
+
+    return render_template("dashboard.html", provincias=provincias, fechas=fechas, provincia=provincia, fecha=fecha, kpis=kpis, lectura=lectura)
+
+
+@bp.route("/api/charts")
+def charts():
+    provincia = request.args.get("provincia", "San Juan")
+    fecha = request.args.get("fecha", "2026-04")
+
+    # Serie exportaciones
+    rows = ExportacionProvincial.query.filter(ExportacionProvincial.provincia == provincia).order_by(ExportacionProvincial.fecha).all()
+    df_exp = pd.DataFrame([{
+        "fecha": r.fecha,
+        "exportaciones_mineras_usd": r.exportaciones_mineras_usd,
+        "variacion_interanual_pct": r.variacion_interanual_pct,
+    } for r in rows], columns=["fecha", "exportaciones_mineras_usd", "variacion_interanual_pct"])
+    if df_exp.empty:
+        fig_exp = empty_fig(f"Exportaciones mineras de {provincia}")
+    else:
+        df_exp["variacion_interanual_pct_plot"] = df_exp["variacion_interanual_pct"] * 100
+        fig_exp = go.Figure()
+        fig_exp.add_trace(go.Bar(
+            x=df_exp["fecha"],
+            y=df_exp["variacion_interanual_pct_plot"],
+            name="Variación interanual",
+            marker_color="#cbd5e1",
+            opacity=0.35,
+            yaxis="y2",
+            hovertemplate="%{x}<br>Variación interanual: %{y:.1f}%<extra></extra>",
+        ))
+        fig_exp.add_trace(go.Scatter(
+            x=df_exp["fecha"],
+            y=df_exp["exportaciones_mineras_usd"],
+            mode="lines+markers",
+            name="Exportaciones mineras",
+            line=dict(color="#0f766e", width=3),
+            marker=dict(size=7),
+            hovertemplate="%{x}<br>Exportaciones: USD %{y:,.0f}<extra></extra>",
+        ))
+        fig_exp.update_layout(
+            title=f"Exportaciones mineras de {provincia}",
+            barmode="relative",
+            yaxis=dict(title="USD FOB"),
+            yaxis2=dict(
+                title="Variación interanual (%)",
+                overlaying="y",
+                side="right",
+                ticksuffix="%",
+                showgrid=False,
+                zeroline=True,
+            ),
+        )
+        fig_exp.update_xaxes(title="")
+
+    # Provincias último mes
+    rows = ExportacionProvincial.query.filter(ExportacionProvincial.fecha == fecha, ExportacionProvincial.provincia != "Argentina").all()
+    df_prov = pd.DataFrame([{"provincia": r.provincia, "valor": r.exportaciones_mineras_usd} for r in rows], columns=["provincia", "valor"])
+    if df_prov.empty:
+        fig_prov = empty_fig(f"Comparación provincial - {fecha}")
+    else:
+        fig_prov = px.bar(df_prov.sort_values("valor", ascending=False), x="provincia", y="valor", title=f"Comparación provincial - {fecha}")
+        fig_prov.update_yaxes(title="USD FOB")
+        fig_prov.update_xaxes(title="")
+
+    # Productos
+    rows = ExportacionProducto.query.filter_by(provincia=provincia, fecha=fecha).all()
+    df_prod = pd.DataFrame([{"producto": r.producto, "valor": r.valor_fob_usd, "participacion": r.participacion_pct} for r in rows], columns=["producto", "valor", "participacion"])
+    if df_prod.empty:
+        fig_prod = empty_fig(f"Composición por producto - {provincia} {fecha}")
+    else:
+        fig_prod = px.pie(df_prod, names="producto", values="valor", title=f"Composición por producto - {provincia} {fecha}", hole=0.45)
+
+    # Destinos
+    rows = ExportacionDestino.query.filter_by(provincia=provincia, fecha=fecha).all()
+    df_dest = pd.DataFrame([{"destino": r.destino, "valor": r.valor_fob_usd, "participacion": r.participacion_pct} for r in rows], columns=["destino", "valor", "participacion"])
+    if df_dest.empty:
+        fig_dest = empty_fig(f"Destinos de exportación - {provincia} {fecha}")
+    else:
+        fig_dest = px.bar(df_dest.sort_values("valor", ascending=True), x="valor", y="destino", orientation="h", title=f"Destinos de exportación - {provincia} {fecha}")
+        fig_dest.update_xaxes(title="USD FOB")
+        fig_dest.update_yaxes(title="")
+
+    # Precios minerales
+    rows = PrecioMineral.query.order_by(PrecioMineral.fecha).all()
+    df_prec = pd.DataFrame([{"fecha": r.fecha, "mineral": r.mineral, "precio_usd": r.precio_usd, "unidad": r.unidad} for r in rows], columns=["fecha", "mineral", "precio_usd", "unidad"])
+    fig_prec_oro = price_fig(df_prec, "Oro", "#b7791f")
+    fig_prec_plata = price_fig(df_prec, "Plata", "#64748b")
+    fig_prec_cobre = price_fig(df_prec, "Cobre", "#b45309")
+    fig_prec_litio = price_fig(df_prec, "Carbonato de litio", "#0f766e")
+
+    # Volumen implícito oro San Juan
+    oro_exp = ExportacionProducto.query.filter_by(provincia=provincia, producto="Oro").order_by(ExportacionProducto.fecha).all()
+    oro_prec = {p.fecha: p.precio_usd for p in PrecioMineral.query.filter_by(mineral="Oro").all()}
+    df_vol = pd.DataFrame([{
+        "fecha": e.fecha,
+        "valor_fob_usd": e.valor_fob_usd,
+        "precio_oro": oro_prec.get(e.fecha),
+        "onza_implicita": e.valor_fob_usd / oro_prec.get(e.fecha) if oro_prec.get(e.fecha) else None,
+    } for e in oro_exp])
+    if df_vol.empty or df_vol["onza_implicita"].dropna().empty:
+        fig_vol = empty_fig(f"Volumen físico implícito de oro - {provincia}", "Sin datos suficientes")
+    else:
+        fig_vol = go.Figure()
+        fig_vol.add_trace(go.Bar(x=df_vol["fecha"], y=df_vol["onza_implicita"], name="Onzas implícitas"))
+        fig_vol.update_layout(title=f"Volumen físico implícito de oro - {provincia}")
+        fig_vol.update_yaxes(title="Onzas troy estimadas")
+        fig_vol.update_xaxes(title="")
+
+    # Balance comercial
+    rows = BalanceComercial.query.order_by(BalanceComercial.fecha).all()
+    df_bal = pd.DataFrame([{"fecha": r.fecha, "alcance": r.alcance, "balance_usd": r.balance_usd} for r in rows], columns=["fecha", "alcance", "balance_usd"])
+    if df_bal.empty:
+        fig_bal = empty_fig("Balance comercial minero", "Sin datos disponibles")
+    else:
+        fig_bal = px.line(df_bal, x="fecha", y="balance_usd", color="alcance", markers=True, title="Balance comercial minero")
+        fig_bal.update_yaxes(title="USD")
+        fig_bal.update_xaxes(title="")
+
+    return jsonify({
+        "exportaciones": fig_json(fig_exp),
+        "provincias": fig_json(fig_prov),
+        "productos": fig_json(fig_prod),
+        "destinos": fig_json(fig_dest),
+        "precio_oro": fig_json(fig_prec_oro, height=300),
+        "precio_plata": fig_json(fig_prec_plata, height=300),
+        "precio_cobre": fig_json(fig_prec_cobre, height=300),
+        "precio_litio": fig_json(fig_prec_litio, height=300),
+        "volumen": fig_json(fig_vol),
+        "balance": fig_json(fig_bal),
+    })
+
+
+@bp.route("/datos")
+def datos():
+    provincia = request.args.get("provincia", "San Juan")
+    rows = ExportacionProvincial.query.filter_by(provincia=provincia).order_by(ExportacionProvincial.fecha.desc()).all()
+    return render_template("datos.html", provincia=provincia, rows=rows)
+
+
+
+
+
+
+
+

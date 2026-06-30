@@ -1,0 +1,173 @@
+fecha,mineral,precio_usd,unidad,variacion_interanual_pct,variacion_mensual_pct,fuente
+2022-11,Oro,1725.0,USD/Oz troy,,,Fuente propia
+2022-11,Plata,21.0,USD/Oz,,,Fuente propia
+2022-11,Cobre,8050.0,USD/tn,,,Fuente propia
+2022-11,Carbonato de litio,80909.0,USD/tn LCE,,,Fuente propia
+2022-12,Oro,1798.0,USD/Oz troy,,0.042319,Fuente propia
+2022-12,Plata,23.3,USD/Oz,,0.109524,Fuente propia
+2022-12,Cobre,8375.0,USD/tn,,0.040373,Fuente propia
+2022-12,Carbonato de litio,80545.0,USD/tn LCE,,-0.004499,Fuente propia
+2023-01,Oro,1898.0,USD/Oz troy,,0.055617,Fuente propia
+2023-01,Plata,23.7,USD/Oz,,0.017167,Fuente propia
+2023-01,Cobre,9038.0,USD/tn,,0.079164,Fuente propia
+2023-01,Carbonato de litio,78227.0,USD/tn LCE,,-0.028779,Fuente propia
+2023-02,Oro,1855.0,USD/Oz troy,,-0.022655,Fuente propia
+2023-02,Plata,21.9,USD/Oz,,-0.075949,Fuente propia
+2023-02,Cobre,8937.0,USD/tn,,-0.011175,Fuente propia
+2023-02,Carbonato de litio,69000.0,USD/tn LCE,,-0.117952,Fuente propia
+2023-03,Oro,1913.0,USD/Oz troy,,0.031267,Fuente propia
+2023-03,Plata,22.0,USD/Oz,,0.004566,Fuente propia
+2023-03,Cobre,8856.0,USD/tn,,-0.009063,Fuente propia
+2023-03,Carbonato de litio,57205.0,USD/tn LCE,,-0.170942,Fuente propia
+2023-04,Oro,2000.0,USD/Oz troy,,0.045478,Fuente propia
+2023-04,Plata,25.0,USD/Oz,,0.136364,Fuente propia
+2023-04,Cobre,8809.0,USD/tn,,-0.005307,Fuente propia
+2023-04,Carbonato de litio,33667.0,USD/tn LCE,,-0.411468,Fuente propia
+2023-05,Oro,1992.0,USD/Oz troy,,-0.004,Fuente propia
+2023-05,Plata,24.3,USD/Oz,,-0.028,Fuente propia
+2023-05,Cobre,8217.0,USD/tn,,-0.067204,Fuente propia
+2023-05,Carbonato de litio,32370.0,USD/tn LCE,,-0.038524,Fuente propia
+2023-06,Oro,1943.0,USD/Oz troy,,-0.024598,Fuente propia
+2023-06,Plata,23.4,USD/Oz,,-0.037037,Fuente propia
+2023-06,Cobre,8397.0,USD/tn,,0.021906,Fuente propia
+2023-06,Carbonato de litio,40943.0,USD/tn LCE,,0.264844,Fuente propia
+2023-07,Oro,1951.0,USD/Oz troy,,0.004117,Fuente propia
+2023-07,Plata,24.3,USD/Oz,,0.038462,Fuente propia
+2023-07,Cobre,8477.0,USD/tn,,0.009527,Fuente propia
+2023-07,Carbonato de litio,39603.0,USD/tn LCE,,-0.032728,Fuente propia
+2023-08,Oro,1919.0,USD/Oz troy,,-0.016402,Fuente propia
+2023-08,Plata,23.4,USD/Oz,,-0.037037,Fuente propia
+2023-08,Cobre,8349.0,USD/tn,,-0.0151,Fuente propia
+2023-08,Carbonato de litio,34199.0,USD/tn LCE,,-0.136454,Fuente propia
+2023-09,Oro,1916.0,USD/Oz troy,,-0.001563,Fuente propia
+2023-09,Plata,23.1,USD/Oz,,-0.012821,Fuente propia
+2023-09,Cobre,8277.0,USD/tn,,-0.008624,Fuente propia
+2023-09,Carbonato de litio,27200.0,USD/tn LCE,,-0.204655,Fuente propia
+2023-10,Oro,1916.0,USD/Oz troy,,0.0,Fuente propia
+2023-10,Plata,22.4,USD/Oz,,-0.030303,Fuente propia
+2023-10,Cobre,7937.0,USD/tn,,-0.041078,Fuente propia
+2023-10,Carbonato de litio,23455.0,USD/tn LCE,,-0.137684,Fuente propia
+2023-11,Oro,1984.0,USD/Oz troy,0.150145,0.035491,Fuente propia
+2023-11,Plata,23.5,USD/Oz,0.119048,0.049107,Fuente propia
+2023-11,Cobre,8190.0,USD/tn,0.017391,0.031876,Fuente propia
+2023-11,Carbonato de litio,20614.0,USD/tn LCE,-0.74522,-0.121126,Fuente propia
+2023-12,Oro,2026.0,USD/Oz troy,0.126808,0.021169,Fuente propia
+2023-12,Plata,23.9,USD/Oz,0.025751,0.017021,Fuente propia
+2023-12,Cobre,8400.0,USD/tn,0.002985,0.025641,Fuente propia
+2023-12,Carbonato de litio,16224.0,USD/tn LCE,-0.798572,-0.212962,Fuente propia
+2024-01,Oro,2034.0,USD/Oz troy,0.071654,0.003949,Fuente propia
+2024-01,Plata,22.9,USD/Oz,-0.033755,-0.041841,Fuente propia
+2024-01,Cobre,8339.0,USD/tn,-0.07734,-0.007262,Fuente propia
+2024-01,Carbonato de litio,14676.0,USD/tn LCE,-0.812392,-0.095414,Fuente propia
+2024-02,Oro,2023.0,USD/Oz troy,0.090566,-0.005408,Fuente propia
+2024-02,Plata,22.7,USD/Oz,0.03653,-0.008734,Fuente propia
+2024-02,Cobre,8300.0,USD/tn,-0.071277,-0.004677,Fuente propia
+2024-02,Carbonato de litio,14088.0,USD/tn LCE,-0.795826,-0.040065,Fuente propia
+2024-03,Oro,2023.0,USD/Oz troy,0.057501,0.0,Fuente propia
+2024-03,Plata,24.5,USD/Oz,0.113636,0.079295,Fuente propia
+2024-03,Cobre,8689.0,USD/tn,-0.018857,0.046867,Fuente propia
+2024-03,Carbonato de litio,13264.0,USD/tn LCE,-0.768132,-0.058489,Fuente propia
+2024-04,Oro,2158.0,USD/Oz troy,0.079,0.066733,Fuente propia
+2024-04,Plata,27.5,USD/Oz,0.1,0.122449,Fuente propia
+2024-04,Cobre,9464.0,USD/tn,0.074356,0.089193,Fuente propia
+2024-04,Carbonato de litio,13653.0,USD/tn LCE,-0.594469,0.029328,Fuente propia
+2024-05,Oro,2331.0,USD/Oz troy,0.170181,0.080167,Fuente propia
+2024-05,Plata,29.4,USD/Oz,0.209877,0.069091,Fuente propia
+2024-05,Cobre,10139.0,USD/tn,0.233905,0.071323,Fuente propia
+2024-05,Carbonato de litio,14167.0,USD/tn LCE,-0.562342,0.037647,Fuente propia
+2024-06,Oro,2351.0,USD/Oz troy,0.209985,0.00858,Fuente propia
+2024-06,Plata,29.6,USD/Oz,0.264957,0.006803,Fuente propia
+2024-06,Cobre,9648.0,USD/tn,0.148982,-0.048427,Fuente propia
+2024-06,Carbonato de litio,13560.0,USD/tn LCE,-0.668808,-0.042846,Fuente propia
+2024-07,Oro,2326.0,USD/Oz troy,0.192209,-0.010634,Fuente propia
+2024-07,Plata,29.8,USD/Oz,0.226337,0.006757,Fuente propia
+2024-07,Cobre,9385.0,USD/tn,0.107113,-0.02726,Fuente propia
+2024-07,Carbonato de litio,12696.0,USD/tn LCE,-0.679418,-0.063717,Fuente propia
+2024-08,Oro,2398.0,USD/Oz troy,0.249609,0.030954,Fuente propia
+2024-08,Plata,28.5,USD/Oz,0.217949,-0.043624,Fuente propia
+2024-08,Cobre,8972.0,USD/tn,0.07462,-0.044006,Fuente propia
+2024-08,Carbonato de litio,11310.0,USD/tn LCE,-0.669289,-0.109168,Fuente propia
+2024-09,Oro,2470.0,USD/Oz troy,0.289144,0.030025,Fuente propia
+2024-09,Plata,30.1,USD/Oz,0.30303,0.05614,Fuente propia
+2024-09,Cobre,9237.0,USD/tn,0.115984,0.029536,Fuente propia
+2024-09,Carbonato de litio,10710.0,USD/tn LCE,-0.60625,-0.05305,Fuente propia
+2024-10,Oro,2571.0,USD/Oz troy,0.341858,0.040891,Fuente propia
+2024-10,Plata,32.4,USD/Oz,0.446429,0.076412,Fuente propia
+2024-10,Cobre,9534.0,USD/tn,0.20121,0.032153,Fuente propia
+2024-10,Carbonato de litio,10785.0,USD/tn LCE,-0.540183,0.007003,Fuente propia
+2024-11,Oro,2690.0,USD/Oz troy,0.355847,0.046285,Fuente propia
+2024-11,Plata,31.1,USD/Oz,0.323404,-0.040123,Fuente propia
+2024-11,Cobre,9076.0,USD/tn,0.108181,-0.048039,Fuente propia
+2024-11,Carbonato de litio,10904.0,USD/tn LCE,-0.471039,0.011034,Fuente propia
+2024-12,Oro,2651.0,USD/Oz troy,0.30849,-0.014498,Fuente propia
+2024-12,Plata,30.8,USD/Oz,0.288703,-0.009646,Fuente propia
+2024-12,Cobre,8916.0,USD/tn,0.061429,-0.017629,Fuente propia
+2024-12,Carbonato de litio,10502.0,USD/tn LCE,-0.352687,-0.036867,Fuente propia
+2025-01,Oro,2648.0,USD/Oz troy,0.301868,-0.001132,Fuente propia
+2025-01,Plata,30.4,USD/Oz,0.327511,-0.012987,Fuente propia
+2025-01,Cobre,8998.0,USD/tn,0.079026,0.009197,Fuente propia
+2025-01,Carbonato de litio,10159.0,USD/tn LCE,-0.307781,-0.03266,Fuente propia
+2025-02,Oro,2710.0,USD/Oz troy,0.339595,0.023414,Fuente propia
+2025-02,Plata,32.2,USD/Oz,0.418502,0.059211,Fuente propia
+2025-02,Cobre,9331.0,USD/tn,0.124217,0.037008,Fuente propia
+2025-02,Carbonato de litio,9815.0,USD/tn LCE,-0.303308,-0.033862,Fuente propia
+2025-03,Oro,2895.0,USD/Oz troy,0.431043,0.068266,Fuente propia
+2025-03,Plata,33.2,USD/Oz,0.355102,0.031056,Fuente propia
+2025-03,Cobre,9740.0,USD/tn,0.120958,0.043832,Fuente propia
+2025-03,Carbonato de litio,9447.0,USD/tn LCE,-0.287771,-0.037494,Fuente propia
+2025-04,Oro,2983.0,USD/Oz troy,0.382298,0.030397,Fuente propia
+2025-04,Plata,32.2,USD/Oz,0.170909,-0.03012,Fuente propia
+2025-04,Cobre,9177.0,USD/tn,-0.030325,-0.057803,Fuente propia
+2025-04,Carbonato de litio,9084.0,USD/tn LCE,-0.334652,-0.038425,Fuente propia
+2025-05,Oro,3218.0,USD/Oz troy,0.380523,0.07878,Fuente propia
+2025-05,Plata,32.8,USD/Oz,0.115646,0.018634,Fuente propia
+2025-05,Cobre,9533.0,USD/tn,-0.059769,0.038793,Fuente propia
+2025-05,Carbonato de litio,8800.0,USD/tn LCE,-0.378838,-0.031264,Fuente propia
+2025-06,Oro,3309.0,USD/Oz troy,0.407486,0.028278,Fuente propia
+2025-06,Plata,36.0,USD/Oz,0.216216,0.097561,Fuente propia
+2025-06,Cobre,9835.0,USD/tn,0.019382,0.031679,Fuente propia
+2025-06,Carbonato de litio,8098.0,USD/tn LCE,-0.402802,-0.079773,Fuente propia
+2025-07,Oro,3353.0,USD/Oz troy,0.441531,0.013297,Fuente propia
+2025-07,Plata,37.7,USD/Oz,0.265101,0.047222,Fuente propia
+2025-07,Cobre,9771.0,USD/tn,0.041129,-0.006507,Fuente propia
+2025-07,Carbonato de litio,8477.0,USD/tn LCE,-0.332309,0.046802,Fuente propia
+2025-08,Oro,3368.0,USD/Oz troy,0.404504,0.004474,Fuente propia
+2025-08,Plata,38.2,USD/Oz,0.340351,0.013263,Fuente propia
+2025-08,Cobre,9670.0,USD/tn,0.077798,-0.010337,Fuente propia
+2025-08,Carbonato de litio,9318.0,USD/tn LCE,-0.176127,0.09921,Fuente propia
+2025-09,Oro,3668.0,USD/Oz troy,0.48502,0.089074,Fuente propia
+2025-09,Plata,42.8,USD/Oz,0.421927,0.120419,Fuente propia
+2025-09,Cobre,9984.0,USD/tn,0.08087,0.032472,Fuente propia
+2025-09,Carbonato de litio,9360.0,USD/tn LCE,-0.12605,0.004507,Fuente propia
+2025-10,Oro,4058.0,USD/Oz troy,0.578374,0.106325,Fuente propia
+2025-10,Plata,49.4,USD/Oz,0.524691,0.154206,Fuente propia
+2025-10,Cobre,10740.0,USD/tn,0.126495,0.075721,Fuente propia
+2025-10,Carbonato de litio,9466.0,USD/tn LCE,-0.122299,0.011325,Fuente propia
+2025-11,Oro,4087.0,USD/Oz troy,0.519331,0.007146,Fuente propia
+2025-11,Plata,50.4,USD/Oz,0.620579,0.020243,Fuente propia
+2025-11,Cobre,10812.0,USD/tn,0.191274,0.006704,Fuente propia
+2025-11,Carbonato de litio,10245.0,USD/tn LCE,-0.060437,0.082295,Fuente propia
+2025-12,Oro,4309.0,USD/Oz troy,0.625424,0.054319,Fuente propia
+2025-12,Plata,62.3,USD/Oz,1.022727,0.236111,Fuente propia
+2025-12,Cobre,11785.0,USD/tn,0.321781,0.089993,Fuente propia
+2025-12,Carbonato de litio,11817.0,USD/tn LCE,0.125214,0.153441,Fuente propia
+2026-01,Oro,4753.0,USD/Oz troy,0.79494,0.10304,Fuente propia
+2026-01,Plata,92.1,USD/Oz,2.029605,0.478331,Fuente propia
+2026-01,Cobre,13012.0,USD/tn,0.446099,0.104115,Fuente propia
+2026-01,Carbonato de litio,18755.0,USD/tn LCE,0.846146,0.58712,Fuente propia
+2026-02,Oro,5020.0,USD/Oz troy,0.852399,0.056175,Fuente propia
+2026-02,Plata,81.9,USD/Oz,1.543478,-0.110749,Fuente propia
+2026-02,Cobre,12951.0,USD/tn,0.387954,-0.004688,Fuente propia
+2026-02,Carbonato de litio,18523.0,USD/tn LCE,0.887213,-0.01237,Fuente propia
+2026-03,Oro,4856.0,USD/Oz troy,0.677375,-0.032669,Fuente propia
+2026-03,Plata,77.9,USD/Oz,1.346386,-0.04884,Fuente propia
+2026-03,Cobre,12529.0,USD/tn,0.286345,-0.032584,Fuente propia
+2026-03,Carbonato de litio,20843.0,USD/tn LCE,1.206309,0.12525,Fuente propia
+2026-04,Oro,4721.0,USD/Oz troy,0.582635,-0.027801,Fuente propia
+2026-04,Plata,75.9,USD/Oz,1.357143,-0.025674,Fuente propia
+2026-04,Cobre,12951.0,USD/tn,0.411246,0.033682,Fuente propia
+2026-04,Carbonato de litio,21263.0,USD/tn LCE,1.340709,0.020151,Fuente propia
+2026-05,Oro,4587.0,USD/Oz troy,0.42542,-0.028384,Fuente propia
+2026-05,Plata,78.0,USD/Oz,1.378049,0.027668,Fuente propia
+2026-05,Cobre,13543.0,USD/tn,0.420644,0.045711,Fuente propia
+2026-05,Carbonato de litio,23816.0,USD/tn LCE,1.706364,0.120068,Fuente propia
