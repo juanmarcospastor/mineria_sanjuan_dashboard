@@ -1,4 +1,4 @@
-﻿async function loadCharts() {
+async function loadCharts() {
   const params = new URLSearchParams(window.dashboardParams);
   const response = await fetch(`/api/charts?${params.toString()}`);
   const data = await response.json();
@@ -12,16 +12,15 @@
     "chart-precio-oro": data.precio_oro,
     "chart-precio-plata": data.precio_plata,
     "chart-precio-cobre": data.precio_cobre,
-    "chart-precio-litio": data.precio_litio,
-    "chart-volumen": data.volumen,
-    "chart-balance": data.balance
+    "chart-precio-litio": data.precio_litio
   };
 
   Object.entries(chartMap).forEach(([id, figJson]) => {
+    const element = document.getElementById(id);
+    if (!element || !figJson) return;
     const fig = JSON.parse(figJson);
-    Plotly.newPlot(id, fig.data, fig.layout, config);
+    Plotly.newPlot(element, fig.data, fig.layout, config);
   });
 }
 
 document.addEventListener("DOMContentLoaded", loadCharts);
-

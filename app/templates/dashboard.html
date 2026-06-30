@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% block content %}
 <section class="filters card">
   <form method="get" id="filter-form">
@@ -51,8 +51,6 @@
       <div class="price-cell"><div id="chart-precio-litio"></div></div>
     </div>
   </div>
-  <div class="card"><div id="chart-volumen"></div></div>
-  <div class="card wide"><div id="chart-balance"></div></div>
 </section>
 
 <section class="card notes">
@@ -70,8 +68,3 @@
 </script>
 <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 {% endblock %}
-
-
-
-
-
